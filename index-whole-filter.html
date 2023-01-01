@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management team</title>
+</head>
+<body>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: black;
+  color: white;
+}
+    th, td {
+  padding: 15px;
+  border-radius: 4px;
+  margin:0px;
+}
+option[value="undefined"]{
+  display:none;
+}select{
+  padding:10px;
+  background-color: transparent;
+  color:white;
+  border:1px dotted white;
+  margin-top:10px;
+  border-radius:5px;
+}th{background-color:#ee187f;}
+
+   tbody > tr:nth-child(odd) {display: none!important;}
+    tr:nth-child(even) {background-color:#282828;color:white;padding:10px;}
+  </style>
+  <h1 style="text-align: center;">
+    Employee Details
+</h1>
+  <table class="table">
+    <thead>
+      <tr></tr>
+      <tr>
+        <th col-index = 1>ID
+          <select class="table-filter" onchange="filter_rows()">
+            <option value="all">All</option>
+        </select>
+        </th>
+        <th col-index = 2>NAME
+          <select class="table-filter" onchange="filter_rows()">
+            <option value="all">All</option>
+        </select>
+        </th>
+        <th col-index = 3>DESIGNATION
+          <select class="table-filter" onchange="filter_rows()">
+            <option value="all">All</option>
+        </select>
+        </th>
+        <th col-index = 4>TEAM
+          <select class="table-filter" onchange="filter_rows()">
+            <option value="all">All</option>
+        </select>
+        </th>
+        <th col-index = 5>MANAGER
+          <select class="table-filter" onchange="filter_rows()">
+            <option value="all">All</option>
+        </select>
+        </th>
+        <th col-index = 6>IMG
+          <select class="table-filter" onchange="filter_rows()">
+            <option value="all">All</option>
+        </select>
+        </th>
+        <th col-index = 7>SHORT
+          <select class="table-filter" onchange="filter_rows()">
+            <option value="all">All</option>
+        </select>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="tdata">
+
+    </tbody>
+
+  </table>
+    
+   
+
+  <!--The SELECT element.-->
+    <!-- <script>
+        fetch('details.json')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            var mainContainer = document.getElementById("myData");
+            for (var i = 0; i < data.length; i++) {
+                var div = document.createElement("div");
+                div.innerHTML = 'Name: ' + data[i].id + ' ' + data[i].name;
+                mainContainer.appendChild(div);
+            }
+        }
+    </script> -->
+   
+    <script>
+      var obj= {
+    "58": {
+        "id": "58",
+        "name": "Mark Hill",
+        "designation": "Cheif Executive Officer",
+        "team": "Product",
+        "manager": null,
+        "img": "https://i.imgur.com/uk87y7L.jpg",
+        "short": "CEO"
+    },
+    "59": {
+        "id": "59",
+        "name": "Joe Linux",
+        "designation": "Cheif Technology Officer",
+        "team": "Development & IT",
+        "manager": "58",
+        "img": "https://i.imgur.com/I8N6wle.gif",
+        "short": "CTO"
+    },
+    "60": {
+        "id": "60",
+        "name": "Linda May",
+        "designation": "Cheif Bussiness Officer",
+        "team": "Bussiness Flow",
+        "manager": "58",
+        "img": "https://i.imgur.com/Id57NSW.jpg",
+        "short": "CBO"
+    },
+    "61": {
+        "id": "61",
+        "name": "John Green",
+        "designation": "Cheif Accounting Officer",
+        "team": "Finance",
+        "manager": "58",
+        "img": "https://i.imgur.com/NRYrB0l.jpeg",
+        "short": "CAO"
+    },
+    "62": {
+        "id": "62",
+        "name": "Ron Blomquist",
+        "designation": "Cheif Information Officer",
+        "team": "Development & IT",
+        "manager": "59",
+        "img": "https://i.imgur.com/Xdx7Ptn.jpeg",
+        "short": "CIO"
+    },
+    "63": {
+        "id": "63",
+        "name": "Michael Rubin",
+        "designation": "Cheif Innovative Officer",
+        "team": "Development & IT",
+        "manager": "59",
+        "img": "https://i.imgur.com/eX7uYfG.jpeg",
+        "short": "CIO"
+    },
+    "64": {
+        "id": "64",
+        "name": "Allice Lopez",
+        "designation": "Cheif Communication Officer",
+        "team": "Bussiness Flow",
+        "manager": "60",
+        "img": "https://i.imgur.com/waxFbz6.jpg",
+        "short": "CCO"
+    },
+    "65": {
+        "id": "65",
+        "name": "Marry Johnson",
+        "designation": "Cheif Brand Officer",
+        "team": "Bussiness Flow",
+        "manager": "60",
+        "img": "https://i.imgur.com/Zi7qqQA.jpg",
+        "short": "CBO"
+    },
+    "66": {
+        "id": "66",
+        "name": "Kirk Douglas",
+        "designation": "Cheif Bussiness Officer",
+        "team": "Bussiness Flow",
+        "manager": "60",
+        "img": "https://i.imgur.com/0hhtbTn.jpeg",
+        "short": "CBO"
+    },
+    "67": {
+        "id": "67",
+        "name": "Erica Reel",
+        "designation": "Cheif Bussiness Officer",
+        "team": "Bussiness Flow",
+        "manager": "60",
+        "img": "https://i.imgur.com/I9XFqdd.jpg",
+        "short": "CBO"
+    }}
+console.log(obj);
+var result = Object.keys(obj).map((key) => [Number(key), obj[key]]);
+
+console.log(result);
+console.log(result[0][0]);
+console.log(result[0][1].name);
+
+var temp ="";
+
+          result.forEach((u)=>{
+            
+              u.forEach((m)=>{
+                //console.log(m);
+              temp+="<tr>"+"<td>"+m.id+"</td>";
+              temp+="<td>"+m.name+"</td>";
+              temp+="<td>"+m.designation+"</td>";
+              temp+="<td>"+m.team+"</td>";
+              temp+="<td>"+m.manager+"</td>";
+              temp+="<td>"+m.img+"<img src=" +m.img+"></td>";
+              temp+="<td>"+m.short+"</td></tr>";
+              });            
+          });
+          document.getElementById("tdata").innerHTML=temp;
+          console.log(temp);
+
+
+
+    </script>
+    <!-- <script>
+      function populateSelect() {
+          // THE JSON ARRAY.
+  
+          let ele = document.getElementById('sel');
+          result.forEach((u)=>{
+            
+            u.forEach((m)=>{
+              //console.log(m);
+              ele.innerHTML = ele.innerHTML +
+                  '<option value="' + m.id + '">' + m.id+ '</option>';
+            });            
+        });
+      //     for (let i = 0; i < result.length; i++) {
+      //         // POPULATE SELECT ELEMENT WITH JSON.
+      //         ele.innerHTML = ele.innerHTML +
+      //             '<option value="' + result[i] + '">' + result[i]+ '</option>';
+      //     }
+      // }
+  
+      function show() {
+          // GET THE SELECTED VALUE FROM <select> ELEMENT AND SHOW IT.
+          let msg = document.getElementById('msg');
+          result.forEach((u)=>{
+            
+            u.forEach((m)=>{
+              //console.log(m);
+              msg.innerHTML = msg.innerHTML +
+              'Selected Manager: <b>' + m.id + '">' + m.id;
+            });            
+        });
+
+          // msg.innerHTML = 'Selected Manager: <b>' + ele.options[ele.selectedIndex].text + '</b> </br>' +
+          //     'ID: <b>' + ele.value + '</b>';
+          //     console.log(ele.value );
+              
+      }}
+  </script> -->
+    
+    <!-- <script>
+    
+    
+    fetch('details.json')
+        .then(response => {
+          //handle response            
+          console.log(response);
+          return response.json();
+        })
+        .then(data => {
+          //handle data
+          console.log(data);
+          console.log(data.length);
+          var a=JSON.stringify(data);
+          console.log(a);
+          console.log(a.length);
+          //alert(data);
+          var temp ="";
+          a.forEach((u)=>{
+            temp+="<tr>";
+              temp+="<td>"+u+"</td>";
+              temp+="<td>"+u.name+"</td>";
+              temp+="<td>"+u.designation+"</td>";
+              temp+="<td>"+u.team+"</td>";
+              temp+="<td>"+u.manager+"</td></tr>";
+          });
+          document.getElementById("tdata").innerHTML=temp;
+          console.log(temp);
+          // var mainContainer = document.getElementById("myData");
+          //   for (var i = 0; i < data.length; i++) {
+          //       var div = document.createElement("div");
+          //       div.innerHTML = 'Name: ' + data[i]["id"]+ ' ' + data[i].name;
+          //       mainContainer.appendChild(div);
+          //   }
+        })
+        .catch(error => {
+          console.log("Error");
+        });</script> -->
+       
+        <!-- <script>
+            function jsonFileGet(){
+const response= fetch('details.json');
+const data=response.json;
+console.log(data);
+
+            }
+            jsonFileGet();
+        </script> -->
+        <script src="./filter.js"></script>
+        <script>
+          window.onload = () => {
+              console.log(document.querySelector("tbody > tr:nth-child(1) > td:nth-child(2) ").innerHTML);
+          };
+  
+          getUniqueValuesFromColumn()
+          
+      </script>
+</body>
+</html>
