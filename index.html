@@ -29,6 +29,10 @@ option[value="undefined"]{
   margin-top:10px;
   border-radius:5px;
 }th{background-color:#ee187f;}
+      img{
+      width:100px;
+          height:100px;
+      }
 
    tbody > tr:nth-child(odd) {display: none!important;}
     tr:nth-child(even) {background-color:#282828;color:white;padding:10px;}
@@ -217,7 +221,7 @@ var temp ="";
               temp+="<td>"+m.designation+"</td>";
               temp+="<td>"+m.team+"</td>";
               temp+="<td>"+m.manager+"</td>";
-              temp+="<td>"+"<img src=" +m.img+" width="100px" height="100px"></td>";
+              temp+="<td>"+"<img src=" +m.img+"></td>";
               temp+="<td>"+m.short+"</td></tr>";
               });            
           });
